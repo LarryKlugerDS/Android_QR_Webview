@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-  <string name="app_name" translatable="false">Docusign Webview Tester</string>
+    <string name="app_name" translatable="false">Docusign Webview Tester</string>
 
-  <string name="qr_button" translatable="false">Scan the QR-Code</string>
-  <string name="ok_action" translatable="false">OK</string>
-  <string name="open_action" translatable="false">Open</string>
-  <string name="scan_barcode" translatable="false">Scan barcode</string>
-  <string name="barcode_format" translatable="false">BarcodeFormat</string>
-  <string name="title" tools:ignore="MissingTranslation">This app opens the QR-Code URL in a Webview</string>
+    <string name="qr_button" translatable="false">Scan the QR-Code</string>
+    <string name="ok_action" translatable="false">OK</string>
+    <string name="open_action" translatable="false">Open</string>
+    <string name="scan_barcode" translatable="false">Scan barcode</string>
+    <string name="barcode_format" translatable="false">BarcodeFormat</string>
+    <string name="title" tools:ignore="MissingTranslation">This app opens the QR-Code URL in a Webview</string>
 </resources>

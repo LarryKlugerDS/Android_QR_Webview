@@ -23,6 +23,8 @@ detekt = "1.23.6"
 dokka = "1.9.20"
 
 junit = "5.10.2"
+activity = "1.8.0"
+constraintlayout = "2.1.4"
 
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -40,6 +42,8 @@ test-junitApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = 
 test-junitEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 
 detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradle" }

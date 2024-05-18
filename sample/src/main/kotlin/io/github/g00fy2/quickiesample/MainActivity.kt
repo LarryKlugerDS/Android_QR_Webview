@@ -54,12 +54,21 @@ class MainActivity : AppCompatActivity() {
       if (result is QRSuccess) {
         val content = result.content
         if (content is QRContent.Url) {
-          setAction(R.string.open_action) { openUrlInBrowser(content.url) }
+          setAction(R.string.open_action) { openUrlInWebView(content.url) }
           return@apply
         }
       }
       setAction(R.string.ok_action) { }
     }.show()
+  }
+
+  private fun openUrlInWebView(url: String) {
+    // https://stackoverflow.com/questions/2835556/whats-the-difference-between-setwebviewclient-vs-setwebchromeclient
+
+    val webViewIntent = Intent(this, WebViewActivity::class.java)
+    // https://stackoverflow.com/a/4878259/64904
+    webViewIntent.putExtra("url", url);
+    startActivity(webViewIntent)
   }
 
   private fun openUrlInBrowser(url: String) {

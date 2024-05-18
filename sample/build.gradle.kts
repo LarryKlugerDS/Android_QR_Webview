@@ -46,4 +46,7 @@ dependencies {
   implementation(project(":quickie"))
 
   implementation(libs.google.materialDesign)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 }
