@@ -32,11 +32,12 @@ class WebViewActivity : AppCompatActivity() {
 
         val windowInsetsController =
           WindowCompat.getInsetsController(window, window.decorView)
-
         // Hide the system bars.
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+        // Hide top app name bar
+        supportActionBar?.hide()
 
-    val bundle = intent.extras
+        val bundle = intent.extras
         val url = bundle?.getString("url")
 
         val myWebView: WebView = findViewById(R.id.webview)
