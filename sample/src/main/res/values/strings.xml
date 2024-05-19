@@ -7,4 +7,7 @@
     <string name="scan_barcode" translatable="false">Scan barcode</string>
     <string name="barcode_format" translatable="false">BarcodeFormat</string>
     <string name="title" tools:ignore="MissingTranslation">This app opens the QR-Code URL in a Webview</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

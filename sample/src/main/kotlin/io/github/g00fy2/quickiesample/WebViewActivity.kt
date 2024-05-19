@@ -1,5 +1,4 @@
 package io.github.g00fy2.quickiesample
-
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.webkit.JavascriptInterface
@@ -19,16 +18,16 @@ class WebViewActivity : AppCompatActivity() {
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+           val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+           v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val bundle = intent.extras
+    val bundle = intent.extras
         val url = bundle?.getString("url")
 
         val myWebView: WebView = findViewById(R.id.webview)
