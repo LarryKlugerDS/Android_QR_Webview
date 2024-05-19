@@ -1,11 +1,14 @@
 package io.github.g00fy2.quickiesample
 import android.annotation.SuppressLint
+import android.icu.text.DisplayContext
 import android.os.Bundle
+import android.view.WindowInsets
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 
 class WebViewActivity : AppCompatActivity() {
@@ -26,6 +29,12 @@ class WebViewActivity : AppCompatActivity() {
            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val windowInsetsController =
+          WindowCompat.getInsetsController(window, window.decorView)
+
+        // Hide the system bars.
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
 
     val bundle = intent.extras
         val url = bundle?.getString("url")
