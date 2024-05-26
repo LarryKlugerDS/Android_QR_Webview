@@ -13,6 +13,12 @@
       android:theme="@style/Theme.Material3.DayNight"
       tools:ignore="DataExtractionRules">
     <activity
+        android:name=".FullscreenActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:exported="false"
+        android:label="@string/title_activity_fullscreen"
+        android:theme="@style/Theme.Material3.DayNight.Fullscreen"/>
+    <activity
         android:name=".WebViewActivity"
         android:exported="false"/>
     <activity
