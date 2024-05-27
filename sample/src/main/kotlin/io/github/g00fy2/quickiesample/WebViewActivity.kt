@@ -1,5 +1,7 @@
 package io.github.g00fy2.quickiesample
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.webkit.JavascriptInterface
@@ -8,9 +10,11 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+
 
 public class WebViewActivity : AppCompatActivity() {
 
@@ -20,16 +24,25 @@ public class WebViewActivity : AppCompatActivity() {
     }
   }
 
-  @JavascriptInterface
-  public fun msg(): String {
-    return "From Android!"
-  }
+  public class WebJavaScriptInterface internal constructor(context: Context, activity: Activity) {
+    var _activity: Activity = activity
+    var _context: Context = context
 
-  @JavascriptInterface
-  public fun postMsg(msg: String) {
-    val resultActivityIntent = Intent(this, ResultActivity::class.java)
-    resultActivityIntent.putExtra("postMsg", msg);
-    startActivity(resultActivityIntent)
+    // Message from Android to JavaScript
+    @JavascriptInterface
+    public fun msg(): String {
+      return "From Android!"
+    }
+
+    // post message to Android app from JavaScript
+    @JavascriptInterface
+    public fun postMsg(msg: String) {
+      _activity.runOnUiThread(Runnable {
+        val resultActivityIntent = Intent(_activity, ResultActivity::class.java)
+        resultActivityIntent.putExtra("postMsg", msg);
+        startActivity(_context, resultActivityIntent, null)
+      })
+    }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,13 +72,8 @@ public class WebViewActivity : AppCompatActivity() {
         @SuppressLint("SetJavaScriptEnabled")
         wvSettings.javaScriptEnabled = true
         wvSettings.domStorageEnabled = true
-        //wvSettings.loadWithOverviewMode = true
-        //wvSettings.useWideViewPort = true
-        //wvSettings.builtInZoomControls = true
-        //wvSettings.displayZoomControls = true
-        //wvSettings.defaultTextEncodingName = "utf-8"
 
-        myWebView.addJavascriptInterface(this, "Android")
+        myWebView.addJavascriptInterface(WebJavaScriptInterface(this@WebViewActivity, this), "WebView")
 
         //myWebView.loadUrl("https://docusign.github.io/examples/androidTest.html")
         myWebView.loadUrl(url!!)
@@ -73,12 +81,5 @@ public class WebViewActivity : AppCompatActivity() {
         // REMOVE Uses url to stop lint errors if url is not used above
         val resultActivityIntent = Intent(this, ResultActivity::class.java)
         resultActivityIntent.putExtra("foo", url);
-
-
-        //myWebView.loadUrl("https://xerox.com?$url")
   }
-
-
-
-
 }
