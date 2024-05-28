@@ -33,13 +33,9 @@ public class ResultActivity : AppCompatActivity() {
         myTextView.text = postMsg
 
         binding.continueToMain.setOnClickListener {
-          continueToMainClick
+          val resultActivityIntent = Intent(this, MainActivity::class.java)
+          startActivity(resultActivityIntent)
         }
-
   }
 
-  val continueToMainClick = View.OnClickListener {
-    val resultActivityIntent = Intent(this, MainActivity::class.java)
-    startActivity(resultActivityIntent)
-  }
 }
